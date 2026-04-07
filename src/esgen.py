@@ -11,6 +11,15 @@ from openpyxl.styles import numbers
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+import webbrowser
+import sys
+
+def caminho_recurso(rel_path):
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, rel_path)
 
 # --- Funções existentes (simplificadas) ---
 def extrair_fornecedor(url):
@@ -37,16 +46,6 @@ def extrair_preco(driver, fornecedor):
             el = driver.find_element(By.XPATH, "//span[contains(@id, 'product-price')]")
             preco = el.get_attribute("data-price-amount")
             return f"R$ {float(preco):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
-        # --- Amazon (exemplo futuro) ---
-        # elif "amazon" in fornecedor:
-        #     el = driver.find_element(By.ID, "priceblock_ourprice")
-        #     return limpar_preco(el.text)
-
-        # --- Mercado Livre (exemplo) ---
-        # elif "mercadolivre" in fornecedor:
-        #     el = driver.find_element(By.CLASS_NAME, "andes-money-amount__fraction")
-        #     return "R$ " + el.text
-
         # --- fallback ---
         else:
             return "Não configurado"
@@ -145,17 +144,28 @@ def gerar_planilha():
     threading.Thread(target=gerar_planilha_thread).start()
 
 def mostrar_sobre():
-    messagebox.showinfo(
-        "ESGen - Excel Sheet Generator\n\n",
-        "Autor: Timóteo A. B. da Silva\n"
-        "Versão: 1.0.0\n\n"
-        "Link do repositório: https://github.com/imbaTIMvel/excel_sheet_generator/tree/main\n"
-        "Manual do Usuário: "
-    )
+    janela_sobre = tk.Toplevel()
+    janela_sobre.title("Sobre o ESGen")
+    janela_sobre.geometry("350x200")
+
+    tk.Label(janela_sobre, text="ESGen - Excel Sheet Generator", font=("Arial", 12, "bold")).pack(pady=5)
+    tk.Label(janela_sobre, text="Versão: 1.0.0 (beta)").pack()
+    tk.Label(janela_sobre, text="Autor: Timóteo A. B. da Silva").pack(pady=5)
+
+    link_github = tk.Label(janela_sobre, text="Repositório GitHub", fg="blue", cursor="hand2")
+    link_github.pack()
+    link_github.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/imbaTIMvel/excel_sheet_generator/tree/main"))
+
+    link_manual = tk.Label(janela_sobre, text="Manual do usuário", fg="blue", cursor="hand2")
+    link_manual.pack(pady=5)
+    link_manual.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/imbaTIMvel/excel_sheet_generator/tree/main/docs/esgen-user_manual-v1.0.0.pdf"))
+
+    tk.Button(janela_sobre, text="Fechar", command=janela_sobre.destroy).pack(pady=10)
 
 # --- UI ---
 janela = tk.Tk()
 janela.title("ESGen")
+janela.iconbitmap(caminho_recurso("assets/icon.ico"))
 
 menu_bar = tk.Menu(janela)
 janela.config(menu=menu_bar)
