@@ -2,7 +2,7 @@
 Repositório oficial do ESGen: Excel Sheet Generator, o gerador de planilhas de preços p/ o Excel.
 
 ## Descrição
-Gerador de planilhas de compras automatizado via scraping.
+Gerador de planilhas de compras automatizado via scraping. Para acessar o Manual do Usuário, clique [aqui](https://github.com/imbaTIMvel/excel_sheet_generator/tree/main/docs/user_manual-v1.0.0.pdf)
 
 ## Versões
 ### [v1.0.0](https://github.com/imbaTIMvel/excel_sheet_generator/tree/main/builds/esgen-v.1.0.0.exe)
