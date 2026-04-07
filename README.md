@@ -12,6 +12,12 @@ Gerador de planilhas de compras automatizado via scraping.
   - Mercado Livre
   - DetonaShop
 - Entrada com quantidade personalizada
-- Geração de planilha Excel formatada
+- Geração de planilha Excel formatada, com as colunas
+  - Item
+  - Valor unitário
+  - Qtde
+  - Valor total
+  - Fornecedor
+  - Links
 - Total automático da compra
 - Interface gráfica (Tkinter)
