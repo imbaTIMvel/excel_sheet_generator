@@ -5,7 +5,7 @@ Repositório oficial do ESGen: Excel Sheet Generator, o gerador de planilhas de 
 Gerador de planilhas de compras automatizado via scraping.
 
 ## Versões
-### [v1.0.0]!(https://github.com/imbaTIMvel/excel_sheet_generator/tree/main/builds)
+### (v1.0.0)![https://github.com/imbaTIMvel/excel_sheet_generator/tree/main/builds]
 - Criação da versão inicial (alfa) do Excel Sheet Generator (ESGen) com interface feita com Tkinter.
 - **Features:**
   - Coleta automática de preços com suporte aos seguintes sites:
