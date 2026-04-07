@@ -5,7 +5,7 @@ Repositório oficial do ESGen: Excel Sheet Generator, o gerador de planilhas de 
 Gerador de planilhas de compras automatizado via scraping.
 
 ## Versões
-### esgen-v1.0.0
+### v1.0.0
 - Criação da versão inicial (alfa) do Excel Sheet Generator (ESGen).
 - **Features:**
   - Coleta automática de preços
